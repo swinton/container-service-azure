@@ -1,8 +1,7 @@
-FROM node:12.2.0-alpine
-
-RUN npm install -g http-server
+FROM node:12-slim
 # Add `/node_modules/.bin` to $PATH
 ENV PATH /node_modules/.bin:$PATH
+RUN npm install -g http-server
 
 RUN mkdir app
 WORKDIR /app
