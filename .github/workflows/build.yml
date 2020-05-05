@@ -1,0 +1,24 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+jobs:  
+  build:
+    name: Build
+    runs-on: self-hosted
+    steps: 
+    - uses: actions/checkout@v2
+    - name: Build popular-repos image
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{secrets.AZURE_REGISTRY_USER}}
+        password: ${{secrets.AZURE_REGISTRY_PASS}}
+        registry: ${{ secrets.AZURE_REGISTRY_NAME }}
+        repository: popular-repos
+        tag_with_sha: true
+        tag_with_ref: true
+        add_git_labels: true
+        cache_froms: popular-repos:latest
+          
+
