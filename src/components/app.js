@@ -5,7 +5,7 @@ const Router = ReactRouter.BrowserRouter;
 const { Route } = ReactRouter;
 const { Switch } = ReactRouter;
 //const Nav = require('./Nav-d');
-const Home = require('./Home');
+const Home = require('./home');
 
 class App extends React.Component {
   render() {

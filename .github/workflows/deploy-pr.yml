@@ -9,6 +9,22 @@ jobs:
     runs-on: self-hosted
     steps: 
     - uses: actions/checkout@v2
+    - name: Cache node modules
+      id: cache-node
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install dependencies
+      if: steps.cache-node.outputs.cache-hit != 'true'
+      run: |
+        npm install --silent
+
+    - name: Build site 
+      run:  npm run build
 
     - name: Build popular-repos image
       uses: docker/build-push-action@v1

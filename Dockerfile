@@ -1,15 +1,16 @@
 FROM node:12.2.0-alpine
 
+RUN npm install -g http-server
 # Add `/node_modules/.bin` to $PATH
 ENV PATH /node_modules/.bin:$PATH
 
-# Install dependencies
-COPY . .
-RUN npm install --silent
-RUN npm run build
+RUN mkdir app
+WORKDIR /app
+
+COPY ./dist .
 
 # Expose port 8080
 EXPOSE 8080
 
 # Start the web app
-CMD ["npm", "start"]
+CMD ["http-server"]
