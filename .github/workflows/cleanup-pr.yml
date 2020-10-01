@@ -2,7 +2,7 @@ name: Cleanup PR
 on:
   pull_request:
     types: [closed]
-    branches: master
+    branches: main
 
 jobs:
   delete-review-slot:
@@ -12,8 +12,8 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_SUBSCRIPTION_SECRET }}
-  
+
     - name: Create deployment slot
       continue-on-error: true
       run: |
-        az webapp deployment slot delete  --name popular-repos --slot review-pr-${{ github.event.number }}  --resource-group pied-piper-inc 
+        az webapp deployment slot delete  --name popular-github-repos --slot review-pr-${{ github.event.number }} --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }}
