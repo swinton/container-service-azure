@@ -22,7 +22,7 @@ jobs:
         environment: staging
 
     - name: Deploy popular repos
-      uses: azure/webapps-container-deploy@v1
+      uses: azure/webapps-deploy@v2
       id: popular-github-repos-web
       with:
         app-name: 'popular-github-repos'

@@ -64,7 +64,7 @@ jobs:
         az webapp deployment slot create --name popular-github-repos --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --slot review-pr-${{ github.event.number }} --configuration-source popular-github-repos
 
     - name: Deploy popular repos
-      uses: azure/webapps-container-deploy@v1
+      uses: azure/webapps-deploy@v2
       id: popular-github-repos-web
       with:
         app-name: 'popular-github-repos'
