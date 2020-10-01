@@ -21,4 +21,4 @@ jobs:
         permission: admin
         issue-type: pull-request
         token: ${{ steps.chatops_token.outputs.token }}
-        reaction-token: ${{ github.token }}
+        reaction-token: ${{ steps.chatops_token.outputs.token }}
