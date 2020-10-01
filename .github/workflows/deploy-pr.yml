@@ -2,7 +2,7 @@ name: Deploy to Azure for Review
 on:
   pull_request:
     branches:
-      - master
+      - main
 jobs:
   build:
     name: Build
