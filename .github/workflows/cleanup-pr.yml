@@ -13,7 +13,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_SUBSCRIPTION_SECRET }}
 
-    - name: Create deployment slot
+    - name: Delete deployment slot
       continue-on-error: true
       run: |
         az webapp deployment slot delete  --name popular-github-repos --slot review-pr-${{ github.event.number }} --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }}
